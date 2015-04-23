@@ -1,0 +1,46 @@
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.panzoom.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <section id="focal">
+
+      <div class="parent">
+        <div class="panzoom">
+          <img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" width="900" height="900">
+        </div>
+        </div>
+		  <div class="parent">
+		  <div class="panzoom2">
+          <img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" width="900" height="900">
+        </div>
+      </div>
+      <script>
+        (function() {
+          var $panzoom = $('#focal').find('.panzoom').panzoom();
+           $panzoom.parent().on('mousewheel.focal', function( e ) {
+            e.preventDefault();
+            var delta = e.delta || e.originalEvent.wheelDelta;
+            var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            $panzoom.panzoom('zoom', zoomOut, {
+              increment: 0.1,
+              animate: false,
+              focal: e
+            });
+          });
+        })();
+		(function() {
+          var $panzoom2 = $('#focal').find('.panzoom2').panzoom();
+           $panzoom2.parent().on('mousewheel.focal', function( e ) {
+            e.preventDefault();
+            var delta = e.delta || e.originalEvent.wheelDelta;
+            var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            $panzoom2.panzoom('zoom', zoomOut, {
+              increment: 0.1,
+              animate: false,
+              focal: e
+            });
+          });
+        })();
+      </script>
+    </section>
+  </body>
+</html>
